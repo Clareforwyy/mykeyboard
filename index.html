@@ -1,0 +1,294 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>手写键盘</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+    <link rel="stylesheet" href="./css/mathquill.css">
+    <link rel="stylesheet" href="./css/keyboard.css">
+    <script src="./js/jquery.1.9.0.min.js"></script>
+    <script src="./js/jquery.slimscroll.min.js"></script>
+    <script src="./js/chinese-pynsimpl.js"></script>
+    <script src="./js/mathquill.min.js"></script>
+</head>
+<body>
+
+<div class="my_box answer_lists">
+    <ul>
+        <li>
+            1、我是一道测试理科题，请输入答案
+            <p data-type="1"></p>
+        </li>
+        <li>
+            1、我是一道测试文科题，请输入答案
+            <p data-type="2"></p>
+        </li>
+    </ul>
+</div>
+
+<div class="input_box js_math">
+    <div class="mask"></div>
+    <div class="input_con">
+        <div class="txt_area clear">
+            <div  id="txt_latex"  class="input_cur input_latex l"></div>
+            <div class="btn_box">
+                <input type="button" value="清空" onclick="clearValue();">
+                <input type="button" value="确定" class="addlatex btn_ok">
+            </div>
+        </div>
+        <div class="change_box clear">
+            <div class="l change_btns active" data-type="zimu">英文</div>
+            <div class="l change_btns" data-type="zhongwen">中文</div>
+            <div class="l change_btns" data-type="shuzi">123</div>
+            <div class="l change_btns" data-type="fuhao">符号</div>
+            <div class="l change_btns" data-type="gongshi">公式</div>
+            <div class="l change_btns" >手写</div>
+            <div class="l close_keyborad"></div>
+        </div>
+        <div class="keyboard_box">
+
+            <div class="prettyprint"></div>
+
+            <div class="softkeyboard"  name="softkeyboard">
+                <div class="c_panel shuzi" id="shuzi">
+                    <table align="center" width="100%" border="0" cellspacing="0" cellpadding="0">
+                        <tbody>
+                        <tr>
+                            <td><input class="i_button i_button_num" type="button" onclick="addValue('0');" value=" 0 "></td>
+                            <td><input class="i_button i_button_num" type="button" onclick="addValue('1');" value=" 1 "></td>
+                            <td><input class="i_button i_button_num" type="button" onclick="addValue('2');" value=" 2 "></td>
+                            <td><input class="i_button i_button_num" type="button" onclick="addValue('3');" value=" 3 "></td>
+                            <td><input class="i_button i_button_num" type="button" onclick="addValue('4');" value=" 4 "></td>
+                            <td><input class="i_button i_button_num" type="button" onclick="addValue('5');" value=" 5 "></td>
+                            <td><input class="i_button i_button_num" type="button" onclick="addValue('6');" value=" 6 "></td>
+                            <td><input class="i_button i_button_num" type="button" onclick="addValue('7');" value=" 7 "></td>
+                            <td><input class="i_button i_button_num" type="button" onclick="addValue('8');" value=" 8 "></td>
+                            <td><input class="i_button i_button_num" type="button" onclick="addValue('9');" value=" 9 "></td>
+
+                        </tr>
+                        <tr>
+                            <td><input class="i_button i_button_num" type="button" value="." onclick="addValue('.');"></td>
+                            <td><input class="i_button i_button_num" type="button" onclick="addValue('①');" value=" ① "></td>
+                            <td><input class="i_button i_button_num" type="button" onclick="addValue('②');" value=" ② "></td>
+                            <td><input class="i_button i_button_num" type="button" onclick="addValue('③');" value=" ③ "></td>
+                            <td><input class="i_button i_button_num" type="button" onclick="addValue('④');" value=" ④ "></td>
+                            <td><input class="i_button i_button_num" type="button" onclick="addValue('⑤');" value=" ⑤ "></td>
+                            <td><input class="i_button i_button_num" type="button" onclick="addValue('⑥');" value=" ⑥ "></td>
+                            <td><input class="i_button i_button_num" type="button" onclick="addValue('⑦');" value=" ⑦ "></td>
+                            <td><input class="i_button i_button_num" type="button" onclick="addValue('⑧');" value=" ⑧ "></td>
+                            <td><input class="i_button i_button_num" type="button" onclick="addValue('⑨');" value=" ⑨ "></td>
+                        </tr>
+
+                        <tr>
+                            <td><input class="i_button i_button_num" type="button" onclick="addValue('+');" value=" + "></td>
+                            <td><input class="i_button i_button_num" type="button" onclick="addValue('-');" value=" - "></td>
+                            <td><input class="i_button i_button_num" type="button" onclick="addValue('*');" value=" * "></td>
+                            <td><input class="i_button i_button_num" type="button" onclick="addValue('/');" value=" / "></td>
+                            <td><input class="i_button i_button_num" type="button" onclick="addValue('=');" value=" = "></td>
+                            <td><input class="i_button i_button_num" type="button" onclick="addValue('<');" value=" < "></td>
+                            <td><input class="i_button i_button_num" type="button" onclick="addValue('>');" value=" > "></td>
+                            <td><input class="i_button i_button_num" type="button" value="删除" onclick="backspace();"></td>
+                            <td><input class="i_button i_button_num" type="button" onclick="clearValue();" value="清空"></td>
+                            <td><input class="i_button i_button_num" onclick="changePanl('zimu');" type="button" value="返回"></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="c_panel zimu" id="zimu" >
+                    <table align="center" width="98%" border="0" cellspacing="0" cellpadding="0">
+                        <tbody>
+                        <tr>
+                            <td><input class="i_button i_button_zm" type="button" onclick="addValue('q');" value=" q "></td>
+                            <td><input class="i_button i_button_zm" type="button" onclick="addValue('w');" value=" w "></td>
+                            <td><input class="i_button i_button_zm" type="button" onclick="addValue('e');" value=" e "></td>
+                            <td><input class="i_button i_button_zm" type="button" onclick="addValue('r');" value=" r "></td>
+                            <td><input class="i_button i_button_zm" type="button" onclick="addValue('t');" value=" t "></td>
+                            <td><input class="i_button i_button_zm" type="button" onclick="addValue('y');" value=" y "></td>
+                            <td><input class="i_button i_button_zm" type="button" onclick="addValue('u');" value=" u "></td>
+                            <td><input class="i_button i_button_zm" type="button" onclick="addValue('i');" value=" i "></td>
+                            <td><input class="i_button i_button_zm" type="button" onclick="addValue('o');" value=" o "></td>
+                            <td><input class="i_button i_button_zm" type="button" onclick="addValue('p');" value=" p "></td>
+
+                        </tr>
+                        <tr>
+                            <td><input class="i_button i_button_fh" type="button" onclick="setCapsLock(this);" value="大写"></td>
+                            <td style="display: none"><input class="i_button i_button_zm js_ym" type="button" value="韵母" onclick="changePanl('yunmu');"></td>
+                            <td><input class="i_button i_button_zm" type="button" onclick="addValue('a');" value=" a "></td>
+                            <td><input class="i_button i_button_zm" type="button" onclick="addValue('s');" value=" s "></td>
+                            <td><input class="i_button i_button_zm" type="button" onclick="addValue('d');" value=" d "></td>
+                            <td><input class="i_button i_button_zm" type="button" onclick="addValue('f');" value=" f "></td>
+                            <td><input class="i_button i_button_zm" type="button" onclick="addValue('g');" value=" g "></td>
+                            <td><input class="i_button i_button_zm" type="button" onclick="addValue('h');" value=" h "></td>
+                            <td><input class="i_button i_button_zm" type="button" onclick="addValue('j');" value=" j "></td>
+                            <td><input class="i_button i_button_zm" type="button" onclick="addValue('k');" value=" k "></td>
+                            <td><input class="i_button i_button_zm" type="button" onclick="addValue('l');" value=" l "></td>
+
+                        </tr>
+                        <tr>
+                            <td><input class="i_button i_button_zm" type="button" value=" 空格" onclick="addValue('\\ ');"></td>
+                            <td><input class="i_button i_button_zm" type="button" onclick="addValue('z');" value=" z "></td>
+                            <td><input class="i_button i_button_zm" type="button" onclick="addValue('x');" value=" x "></td>
+                            <td><input class="i_button i_button_zm" type="button" onclick="addValue('c');" value=" c "></td>
+                            <td><input class="i_button i_button_zm" type="button" onclick="addValue('v');" value=" v "></td>
+                            <td><input class="i_button i_button_zm" type="button" onclick="addValue('b');" value=" b "></td>
+                            <td><input class="i_button i_button_zm" type="button" onclick="addValue('n');" value=" n "></td>
+                            <td><input class="i_button i_button_zm" type="button" onclick="addValue('m');" value=" m "></td>
+                            <td colspan="2"><input class="i_button i_button_bs" type="button" value=" 删除" onclick="backspace();"></td>
+
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="c_panel fuhao" id="fuhao">
+                    <table align="center" width="98%" border="0" cellspacing="0" cellpadding="0">
+                        <tbody>
+                        <tr>
+                            <td><input class="i_button i_button_fh" type="button" onclick="addValue('~');" value=" ~ "></td>
+                            <td><input class="i_button i_button_fh" type="button" onclick="addValue('@');" value=" @ "></td>
+                            <td><input class="i_button i_button_fh" type="button" onclick="addValue('#');" value=" # "></td>
+                            <td><input class="i_button i_button_fh" type="button" onclick="addValue('$');" value=" $ "></td>
+                            <td><input class="i_button i_button_fh" type="button" onclick="addValue('￥');" value=" ￥ "></td>
+                            <td><input class="i_button i_button_fh" type="button" onclick="addValue('%');" value=" % "></td>
+                            <td><input class="i_button i_button_fh" type="button" onclick="addValue('\'');" value=" ' "></td>
+                            <td><input class="i_button i_button_fh" type="button" onclick="addValue('_');" value=" _ "></td>
+                            <td><input class="i_button i_button_fh" type="button" onclick="addValue('|');" value=" | "></td>
+                            <td><input class="i_button i_button_fh" type="button" onclick="addValue('-');" value=" - "></td>
+                            <td><input class="i_button i_button_fh" type="button" onclick="addValue('+');" value=" + "></td>
+                            <td><input class="i_button i_button_fh" type="button" onclick="addValue('=');" value=" = "></td>
+                        </tr>
+                        <tr>
+                            <td><input class="i_button i_button_fh" type="button" onclick="addValue('<');" value=" < "></td>
+                            <td><input class="i_button i_button_fh" type="button" onclick="addValue('>');" value=" > "></td>
+                            <td><input class="i_button i_button_fh" type="button" onclick="addValue('《');" value=" 《 "></td>
+                            <td><input class="i_button i_button_fh" type="button" onclick="addValue('》');" value=" 》 "></td>
+                            <td><input class="i_button i_button_fh" type="button" onclick="addValue('!');" value=" ! "></td>
+                            <td><input class="i_button i_button_fh" type="button" onclick="addValue('?');" value=" ? "></td>
+                            <td><input class="i_button i_button_fh" type="button" onclick="addValue(';');" value=" ; "></td>
+                            <td><input class="i_button i_button_fh" type="button" onclick="addValue(':');" value=" : "></td>
+                            <td><input class="i_button i_button_fh" type="button" onclick="addValue('(');" value=" ( "></td>
+                            <td><input class="i_button i_button_fh" type="button" onclick="addValue(')');" value=" ) "></td>
+                            <td><input class="i_button i_button_fh" type="button" onclick="addValue('*');" value=" * "></td>
+                            <td><input class="i_button i_button_fh" type="button" onclick="addValue('/');" value=" / "></td>
+                        </tr>
+                        <tr>
+                            <td><input class="i_button i_button_fh" type="button" onclick="addValue('{');" value=" { "></td>
+                            <td><input class="i_button i_button_fh" type="button" onclick="addValue('}');" value=" } "></td>
+                            <td><input class="i_button i_button_fh" type="button" onclick="addValue('[');" value=" [ "></td>
+                            <td><input class="i_button i_button_fh" type="button" onclick="addValue(']');" value=" ] "></td>
+                            <td><input class="i_button i_button_fh" type="button" onclick="addValue('、');" value=" 、 "></td>
+                            <td><input class="i_button i_button_fh" type="button" onclick="addValue(',');" value=" , "></td>
+                            <td><input class="i_button i_button_fh" type="button" onclick="addValue('。');" value=" 。 "></td>
+                            <td><input class="i_button i_button_fh" type="button" onclick='addValue("\"");' value=' " '></td>
+
+
+                            <td><input class="i_button i_button_zm" type="button" value=" 空格" onclick="addValue('\\ ');"></td>
+                            <td><input class="i_button i_button_zm" type="button" onclick="clearValue();" value="清空"></td>
+                            <td><input class="i_button i_button_zm" type="button" value=" 删除" onclick="backspace();"></td>
+                            <td><input class="i_button i_button_zm" type="button" value=" 返回" onclick="changePanl('zimu');"></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="c_panel yunmu" id="yunmu"  style="display:none;">
+                    <table align="center" width="98%" border="0" cellspacing="0" cellpadding="0">
+                        <tbody>
+                        <tr>
+                            <td><input class="i_button i_button_fh" type="button" onclick="addValue('ā');" value=" ā "></td>
+                            <td><input class="i_button i_button_fh" type="button" onclick="addValue('á');" value=" á "></td>
+                            <td><input class="i_button i_button_fh" type="button" onclick="addValue('ǎ');" value=" ǎ "></td>
+                            <td><input class="i_button i_button_fh" type="button" onclick="addValue('à');" value=" à "></td>
+                            <td><input class="i_button i_button_fh" type="button" onclick="addValue('ō');" value=" ō "></td>
+                            <td><input class="i_button i_button_fh" type="button" onclick="addValue('ó');" value=" ó "></td>
+                            <td><input class="i_button i_button_fh" type="button" onclick="addValue('ǒ');" value=" ǒ "></td>
+                            <td><input class="i_button i_button_fh" type="button" onclick="addValue('ò');" value=" ò "></td>
+                            <td><input class="i_button i_button_fh" type="button" onclick="addValue('ê');" value=" ê "></td>
+                            <td><input class="i_button i_button_zm" type="button" value=" 删除" onclick="backspace();"></td>
+                        </tr>
+                        <tr>
+                            <td><input class="i_button i_button_fh" type="button" onclick="addValue('ē');" value=" ē "></td>
+                            <td><input class="i_button i_button_fh" type="button" onclick="addValue('é');" value=" é "></td>
+                            <td><input class="i_button i_button_fh" type="button" onclick="addValue('ě');" value=" ě "></td>
+                            <td><input class="i_button i_button_fh" type="button" onclick="addValue('è');" value=" è "></td>
+                            <td><input class="i_button i_button_fh" type="button" onclick="addValue('ī');" value=" ī "></td>
+                            <td><input class="i_button i_button_fh" type="button" onclick="addValue('í');" value=" í "></td>
+                            <td><input class="i_button i_button_fh" type="button" onclick="addValue('ǐ');" value=" ǐ "></td>
+                            <td><input class="i_button i_button_fh" type="button" onclick="addValue('ì');" value=" ì "></td>
+                            <td ><input class="i_button i_button_zm" type="button" value=" 空格" onclick="addValue('\\ ');"></td>
+                            <td><input class="i_button i_button_zm" type="button" onclick="clearValue();" value="清空"></td>
+
+                        </tr>
+                        <tr>
+                            <td><input class="i_button i_button_fh" type="button" onclick="addValue('ū');" value=" ū "></td>
+                            <td><input class="i_button i_button_fh" type="button" onclick="addValue('ú');" value=" ú "></td>
+                            <td><input class="i_button i_button_fh" type="button" onclick="addValue('ǔ');" value=" ǔ "></td>
+                            <td><input class="i_button i_button_fh" type="button" onclick="addValue('ù');" value=" ù "></td>
+                            <td><input class="i_button i_button_fh" type="button" onclick="addValue('ǖ');" value=" ǖ "></td>
+                            <td><input class="i_button i_button_fh" type="button" onclick="addValue('ǘ');" value=" ǘ "></td>
+                            <td><input class="i_button i_button_fh" type="button" onclick="addValue('ǚ');" value=" ǚ "></td>
+                            <td><input class="i_button i_button_fh" type="button" onclick="addValue('ǜ');" value=" ǜ "></td>
+                            <td><input class="i_button i_button_fh" type="button" onclick="addValue('ü');" value=" ü "></td>
+                            <td><input class="i_button i_button_zm" type="button" value=" 返回" onclick="changePanl('zimu');"></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="c_panel gongshi" id="gongshi">
+
+                    <table align="center" width="98%" border="0" cellspacing="0" cellpadding="0">
+                        <tbody>
+                        <tr>
+                            <td><input class="i_button i_button_fh i_icon i_icon_1" type="button" onclick="addValue('\\times',true);"></td>
+                            <td><input class="i_button i_button_fh i_icon i_icon_2" type="button" onclick="addValue('\\div',true);"></td>
+                            <td><input class="i_button i_button_fh i_icon i_icon_3" type="button" onclick="addValue('\\cdot',true);"></td>
+                            <td><input class="i_button i_button_fh i_icon i_icon_4" type="button" onclick="addValue('\\leq',true);"></td>
+                            <td><input class="i_button i_button_fh i_icon i_icon_5" type="button" onclick="addValue('\\geq',true);"></td>
+                            <td><input class="i_button i_button_fh i_icon i_icon_6" type="button" onclick="addValue('\\neq',true);"></td>
+                            <td><input class="i_button i_button_fh i_icon i_icon_7" type="button" onclick="addValue('\\frac{}{}',true);"></td>
+                            <td><input class="i_button i_button_fh i_icon i_icon_8" type="button" onclick="addValue('^{}',true);"></td>
+                            <td><input class="i_button i_button_fh i_icon i_icon_9" type="button" onclick="addValue('_{}',true);"></td>
+                            <td><input class="i_button i_button_fh i_icon i_icon_10" type="button" onclick="addValue('\\sqrt{}',true);"></td>
+                            <td><input class="i_button i_button_fh i_icon i_icon_11" type="button" onclick="addValue('\\sqrt[]{}',true);"></td>
+                            <td><input class="i_button i_button_fh i_icon i_icon_12" type="button" onclick="addValue('\\left |  \\right |',true);"></td>
+                            <td><input class="i_button i_button_fh" type="button" onclick="addValue('<',true);" value=" < "></td>
+                        </tr>
+                        <tr>
+                            <td><input class="i_button i_button_fh" type="button" onclick="addValue('>',true);" value=" > "></td>
+                            <td><input class="i_button i_button_fh" type="button" onclick="addValue('-',true);" value=" - "></td>
+                            <td><input class="i_button i_button_fh" type="button" onclick="addValue('+',true);" value=" + "></td>
+                            <td><input class="i_button i_button_fh" type="button" onclick="addValue('=',true);" value=" = "></td>
+                            <td><input class="i_button i_button_fh" type="button" onclick="addValue('\\sum',true);" value=" ∑ "></td>
+                            <td><input class="i_button i_button_fh" type="button" onclick="addValue('\\approx',true);" value=" ≈ " ></td>
+                            <td><input class="i_button i_button_fh i_icon i_icon_15" type="button" onclick="addValue('\\vec{}',true);"></td>
+                            <td><input class="i_button i_button_fh i_icon i_icon_16" type="button" onclick="addValue('\\dot{}',true);"></td>
+                            <td><input class="i_button i_button_fh i_icon i_icon_17" type="button" onclick="addValue('\\pi',true);"></td>
+                            <td><input class="i_button i_button_fh i_icon i_icon_18" type="button" onclick="addValue('\\alpha',true);"></td>
+                            <td><input class="i_button i_button_fh i_icon i_icon_19" type="button" onclick="addValue('\\beta',true);"></td>
+                            <td><input class="i_button i_button_fh i_icon i_icon_20" type="button" onclick="addValue('\\angle',true);"></td>
+                            <td><input class="i_button i_button_fh i_icon i_icon_21" type="button" onclick="addValue('^{\\circ}',true);"></td>
+                        </tr>
+                        <tr>
+                            <td><input class="i_button i_button_fh i_icon i_icon_22" type="button" onclick="addValue('\\Delta',true);"></td>
+                            <td><input class="i_button i_button_fh i_icon i_icon_23" type="button" onclick="addValue('\\odot',true);"></td>
+                            <td><input class="i_button i_button_fh i_icon i_icon_24" type="button" onclick="addValue('\\perp',true);"></td>
+                            <td><input class="i_button i_button_fh i_icon i_icon_25" type="button" onclick="addValue('\\pm',true);"></td>
+                            <td><input class="i_button i_button_fh i_icon i_icon_26" type="button" onclick="addValue('\\mp',true);"></td>
+                            <td><input class="i_button i_button_fh i_icon i_icon_27" type="button" onclick="addValue('\\theta',true);"></td>
+                            <td><input class="i_button i_button_fh i_icon i_icon_28" type="button" onclick="addValue('\\lambda',true);"></td>
+                            <td><input class="i_button i_button_fh i_icon i_icon_29" type="button" onclick="addValue('\\mu',true);"></td>
+
+                            <td><input class="i_button i_button_zm" type="button" value=" 空格" onclick="addValue('\\ ');"></td>
+                            <td><input class="i_button i_button_zm" type="button" onclick="clearValue();" value="清空"></td>
+                            <td><input class="i_button i_button_zm" type="button" value=" 删除" onclick="backspace();"></td>
+                            <td colspan="2"><input class="i_button i_button_bs" type="button" value=" 返回" onclick="changePanl('zimu');"></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script src="./js/keyboard.js"></script>
+</body>
+</html>
