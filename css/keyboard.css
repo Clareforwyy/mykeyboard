@@ -1,0 +1,228 @@
+/*
+*2018-06-01
+*by wangyingyu
+*/
+*{
+    margin: 0;
+    padding: 0;
+}
+td{
+    vertical-align: middle;
+}
+ul{
+    list-style: none;
+}
+var{
+    font-weight: normal;
+}
+.l{
+    float: left;
+}
+.r{
+    float: right;
+}
+.clear:after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 0;
+    overflow: hidden;
+    clear: both;
+}
+.my_box{
+    text-align: center;
+    margin-top: 10px;
+}
+.keyboard_box{
+    text-align: center;
+    background: #333;
+    position: relative;
+}
+.softkeyboard {
+    display: inline-block;
+}
+.softkeyboard td {
+    padding: 4px;
+}
+.c_panel {
+    background-color: #333;
+    text-align: center;
+    padding: 15px;
+}
+.prettyprint{
+    position: absolute;
+    top:-30px;
+    left:0;
+    background: #fff;
+}
+.input_cur {
+    height: 40px;
+    padding: 1%;
+    font-size: 16px;
+    border: none;
+}
+.close_keyborad{
+    width: 10%;
+    height: 40px;
+    background:#f4f4f4 url("../images/datika_53.gif") center no-repeat;
+}
+.change_btns{
+    width: 15%;
+    background: #f4f4f4;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+}
+.txt_area >.input_cur{
+    width: 78%;
+    float: left;
+}
+.txt_area{
+    background: #f4f4f4;
+    border-bottom: 1px solid #d8d8d8;
+}
+.latex_box{
+    display: none;
+}
+.mq-root-block, .mq-math-mode .mq-root-block{overflow: auto;min-height: 100px;
+}
+.input_latex{width: 300px;}
+.i_button {border: none;height: 40px;width: 50px;font-size: 16px;background-color: #666;color: #fff;}
+.i_button:active {background-color: #999;}
+.change_btns.active{background-color: #d8d8d8;}
+.i_button_num {}
+.i_button_btn {float: right;width: 88px;}
+.i_button_bs {float: right;width: 108px;}
+.input_box {display: none;position: fixed;top:0;left: 0;width: 100%;height: 100%;z-index: 999;}
+.mask{position: absolute;left: 0;width: 100%;height: 100%;background: rgba(0,0,0,0.4);}
+.input_con{width: 100%;position: absolute;left: 0;bottom:0;
+    display: none;}
+.btn_box{text-align: center;
+    height: 40px;
+    padding: 1% 0;
+    width: 18%;
+    float: left;}
+.btn_box input{
+    border: none;
+    width: 40%;
+    height: 100%;
+    line-height: 1.5;
+    background: border-box;
+    background: -webkit-linear-gradient(top, #eaba3b, #e2aa18);
+    font-size: 16px;
+    text-align: center;
+    border-radius: 10px;
+    color: #fff;}
+.btn_box input:active{
+    background: -webkit-linear-gradient(top, #ffce4e, #f0bc34);
+}
+.zn_box{
+    position: absolute;
+    top: 66px;
+    left: 0;
+    text-align: center;
+    line-height: 40px;
+    background: #333;
+    padding: 2px 0;
+    width: 100%;
+    height: 40px;
+    overflow: hidden;
+}
+.zn_box.on{
+    overflow: initial;
+    height: 200px;
+}
+.zn_box p{
+    color: #fff;
+    margin-left: 10px;
+}
+.zn_box span{
+    float: left;
+    display: block;
+    height: 40px;
+    width: 80px;
+    color: #fff;
+    background: #999;
+    margin:0 5px 0 2px;
+}
+.zn_box .zn_scroll{
+    float: left;
+    width: 84%;
+}
+.zn_box ul li{
+    width: 40px;
+    margin: 0 5px 10px;
+    float: left;
+    background: #666;
+    color: #fff;
+}
+.zn_btn{
+    width: 60px;
+    height: 40px;
+    display: block;
+    float: right;
+    background:url("../images/datika_45.gif") center no-repeat;
+}
+.zn_btn.on{
+    background:url("../images/datika_52.gif") center no-repeat;
+}
+.answer_lists i{
+    float: left;
+}
+.answer_lists p{
+    min-height: 100px;
+    width: 800px;
+    margin: 0 auto;
+    float: left;
+    border-bottom: 1px solid #e4e4e4;
+    text-align: left;
+}
+.answer_lists i{
+    height: 3vh;
+    line-height: 3vh;
+}
+
+.packQuestion_answer ul{
+    padding: 3vh 3vw;
+}
+.answer_lists{
+    position: relative;
+    padding-top: 3vh;
+    font-size: 2.3vh;
+    width: 800px;
+    margin: 0 auto;
+}
+/*公式*/
+.i_icon{
+    background:#666 url('../images/all_latex.png') no-repeat;
+    background-size: 560px 200px;
+}
+.i_icon_1{background-position: 7px 3px;}
+.i_icon_2{background-position: -35px 3px;}
+.i_icon_3{background-position: -74px 3px;}
+.i_icon_4{background-position: -114px 3px;}
+.i_icon_5{background-position: -153px 3px;}
+.i_icon_6{background-position: -196px 3px;}
+.i_icon_7{background-position: 7px -30px;}
+.i_icon_8{background-position: -114px -30px;}
+.i_icon_9{background-position: -153px -30px;}
+.i_icon_10{background-position: -196px -30px;}
+.i_icon_11{background-position: -236px -30px;}
+.i_icon_12{background-position: -276px -30px;}
+.i_icon_13{background-position: -316px -30px;}
+.i_icon_14{background-position: -354px -30px;}
+.i_icon_15{background-position: -434px -30px;}
+.i_icon_16{background-position: -474px -30px;}
+.i_icon_17{background-position: 7px -63px;}
+.i_icon_18{background-position: -35px -63px;}
+.i_icon_19{background-position: -74px -63px;}
+.i_icon_20{background-position: -114px -63px;}
+.i_icon_21{background-position: -153px -63px;}
+.i_icon_22{background-position: -196px -63px;}
+.i_icon_23{background-position: -236px -63px;}
+.i_icon_24{background-position: -354px -63px;}
+.i_icon_25{background-position: -474px -63px;}
+.i_icon_26{background-position: -514px -63px;}
+.i_icon_27{background-position: 7px -93px;}
+.i_icon_28{background-position: -35px -93px;}
+.i_icon_29{background-position: -74px -93px;}
