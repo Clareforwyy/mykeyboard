@@ -200,8 +200,10 @@ $(function(){
         $(this).addClass("active").siblings().removeClass("active")
         changePanl($(this).attr("data-type"));
     })
+    $(".answer_lists li p").each(function () {
+        MQ.StaticMath($(this)[0])
+    })
 
-    MQ.StaticMath($(".answer_lists")[0])
 })
 
 
