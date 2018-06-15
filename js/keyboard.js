@@ -200,6 +200,8 @@ $(function(){
         $(this).addClass("active").siblings().removeClass("active")
         changePanl($(this).attr("data-type"));
     })
+
+    MQ.StaticMath($(".answer_lists")[0])
 })
 
 
