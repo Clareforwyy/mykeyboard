@@ -193,6 +193,10 @@ $(function(){
     })
     //切换功能
     $(".change_btns").on("click",function () {
+        if($(this).text() == '手写'){
+            alert("开发中。。。")
+            return false;
+        }
         $(this).addClass("active").siblings().removeClass("active")
         changePanl($(this).attr("data-type"));
     })
